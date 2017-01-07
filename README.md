@@ -56,6 +56,18 @@ for this function; pay especial attention to the frequency values that correspon
 to each element of the vector that this function returns, and to how to specify the number
 of points in the FFT it computes.
 
+Algorithm 6.2 Iterative FFT.
+Require: x is a discrete function of time of length N
+Ensure: X is the DFT of x (also of length N)
+if N is not a power of two then
+Pad x with zeros until its length is the next power of two
+end if
+Shue the x[n] in bit-reversed order
+Size = 2 fSize = 1 DFTs already doneg while Size < N do
+Compute N=Size DFTs from the existing ones as XSize=2[k]even +e􀀀jk2=SizeXSize=2[k]odd
+Size = Size  2
+end while
+
 Step 1.1 Implement your own myFFT function in Matlab that takes a real-valued vector as
 input, computes a 256-point FFT, and returns a real-valued vector that is the magnitude of
 the (single-sided, i.e., only positive frequencies) FFT. Implement this function using loops
